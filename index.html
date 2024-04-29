@@ -4,13 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Likhith's Portfolio</title>
+    <link rel="icon" href="images/favicon.ico" />
     <style>
+      :root {
+        --stop1: #4285f4;
+        --stop2: #9b72cb;
+        --stop3: #d96570;
+        --surface: #212125;
+      }
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
       }
       header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
         background-color: #333;
         color: #fff;
         padding: 20px;
@@ -42,6 +52,8 @@
         margin-bottom: 0;
       }
       footer {
+        position: relative;
+        z-index: 2;
         background-color: #333;
         color: #fff;
         text-align: center;
@@ -51,99 +63,626 @@
         bottom: 0;
         width: 100%;
       }
-      .contact {
-        display: flex;
-        justify-content: space-evenly;
-        
+
+      main {
+        color: rgb(238, 233, 233);
+        background: radial-gradient(circle, #1b1919, #383535);
+        position: relative;
+        z-index: 2;
+        border-radius: 15px;
+        max-width: 900px;
+        margin: 20px auto;
+        border: 2px solid transparent;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        filter: drop-shadow(0 0 1em #fffa64aa);
+        animation: twinkling 4s infinite;
       }
-      .contact a {
+      @keyframes twinkling {
+        0% {
+          filter: drop-shadow(0 0 1em #fffa64aa);
+        }
+        50% {
+          filter: drop-shadow(0 0 2em #fffa64aa);
+        }
+        100% {
+          filter: drop-shadow(0 0 1em #fffa64aa);
+        }
+      }
+      main p {
+        font-size: 1.2em;
+      }
+      .b-font {
+        position: relative;
+        display: inline-block;
+        color: transparent;
+        background: linear-gradient(
+          74deg,
+          var(--stop1) 0,
+          var(--stop2) 9%,
+          var(--stop3) 20%,
+          var(--stop3) 24%,
+          var(--stop2) 35%,
+          var(--stop1) 44%,
+          var(--stop2) 50%,
+          var(--stop3) 56%,
+          var(--surface) 75%,
+          var(--surface) 100%
+        );
+        background-size: 400% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .container-animation {
+        position: fixed;
+        height: 100vh;
+        overflow: hidden;
+        animation: animate 4s linear infinite;
+      }
+
+      /* Hexagon using clip-path */
+      .hexagon {
+        position: relative;
+        width: 100px;
+        height: 110px;
+        background: rgb(42, 39, 39);
+        margin: 1px;
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        transition: 2s;
+      }
+
+      .hexagon:hover {
+        transition: 0s;
+        background: #0f0;
+      }
+
+      .hexagon:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .row-animation {
+        display: inline-flex;
+        margin-top: -32px;
+        margin-left: -50px;
+      }
+
+      .row-animation:nth-child(even) {
+        margin-left: 1px;
+      }
+
+      @keyframes animate {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      /* @media only screen and (min-width: 600px) {
+              .container-animation {
+                height: 85vh;
+              }
+            } */
+
+      @media only screen and (max-width: 600px) {
+        .container-animation {
+          height: 100vh;
+        }
+      }
+      ul.tech-stack {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex; /* Arrange items horizontally */
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        /* justify-content: space-around; Distribute evenly */
+        /* Optional: Customize spacing for items */
+        margin-bottom: 1rem;
+      }
+
+      ul.tech-stack li {
+        padding: 10px 15px; /* Inner padding for content */
+        margin: 5px; /* Spacing between list items */
+        border: 1px solid #444; /* Dark border for separation */
+        border-radius: 5px; /* Rounded corners for a softer look */
+        background-color: #222; /* Dark background for dark theme */
+        color: #ddd; /* Light text color for readability */
+        /* Optional: Customize hover effect for interactivity */
+        transition: background-color 0.4s ease-in-out, transform 0.4s ease-in;
+        cursor: pointer;
+        animation: bang 3s 7s;
+      }
+      @keyframes bang {
+        0% {
+          filter: drop-shadow(0 0 1em #e75050aa);
+          transform: scale(1.1);
+        }
+        50% {
+          filter: drop-shadow(0 0 2em #ff6464aa);
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 1em #ff6964aa);
+        }
+      }
+      ul.tech-stack li::before {
+        content: "⚡";
+      }
+      ul.tech-stack li:hover {
+        background: #4caf50;
+        transform: scale(1.05); /* Slightly enlarge list items on hover */
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      h2 {
+        color: transparent;
+        background: rgb(28, 236, 3);
+        background: linear-gradient(
+          90deg,
+          rgba(28, 236, 3, 1) 0%,
+          rgba(237, 17, 113, 1) 100%
+        );
+        background-clip: text;
+        display: inline-block;
+      }
+      /* Style the list container */
+      .hobbies-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      /* Style each list item */
+      .hobbies-list li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #333; /* Dark background color */
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* White box shadow for contrast */
+        font-size: 16px;
+        color: #fff; /* White text color */
+      }
+
+      .hobbies-list li:hover {
+        background-color: #444; /* Darker background color on hover */
+        transition: background-color 0.3s ease;
+      }
+      .bang-link {
         text-decoration: none;
+        font-weight: bold;
+        color: whitesmoke;
+        padding: 0.2em;
+        border-radius: 20px;
+        animation: boom 1.5s infinite;
+        background-color: #1976d2;
+        display: inline-block;
       }
-      .contact a:hover {
-        font-size: 1.5rem;
-        text-shadow: 2px 2px 5px #333; /* Add shadow effect */
-        transform: translateY(-13px);
+      @keyframes boom {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .project a {
+        float: right;
+        margin-left: 1em;
+      }
+      .project a:hover {
+        transform: rotate(360deg);
+        filter: drop-shadow(0 0 0.5em #0a94d9);
+        transition: all 0.5s ease-in-out;
+      }
+      .project:hover {
+        transform: scaleX(1.02) ;
+        box-shadow: 0 5px 5px #0a94d9;
+        transition: all 0.3s ease;
       }
     </style>
   </head>
   <body>
+    <bg class="container-animation">
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+      <div class="row-animation">
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+        <div class="hexagon"></div>
+      </div>
+    </bg>
     <header>
-      <h1>Likhith's Portfolio</h1>
+      <h1 class="b-font">Likhith's Portfolio</h1>
     </header>
-    <div class="container">
-      <h2>About Me</h2>
-      <p>
-        Hello and welcome to my site I’m Likhith, a passionate full stack
-        developer with 1.5 years of experience at Way2News Pvt. Ltd. During my
-        tenure, I’ve had the opportunity to work on a variety of web
-        applications, honing my skills in JavaScript, jQuery, React, and Java.
-        My expertise extends to database management and optimization with MySQL,
-        MongoDB, Redis, and ClickHouse.
-      </p>
-      <h2>Education</h2>
-      I graduated with a major in Computer Science and Engineering from RGUKT
-      Nuzvid in 2023, where I developed a solid foundation in both theoretical
-      and practical aspects of software engineering. My goal is to bridge the
-      gap between academic knowledge and industry requirements, preparing you to
-      be a versatile and competent full stack developer.
-      <p></p>
-      <h2>Hobbies</h2>
-      <ul>
-        <li>Coding and programming</li>
-        <li>Reading tech blogs and articles</li>
-        <li>Hiking and outdoor activities</li>
-      </ul>
-      <h2>Tech Stack</h2>
-      <ul>
-        <li>Java</li>
-        <li>Spring Boot</li>
-        <li>MySql</li>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>React.js</li>
-        <li>jQuery</li>
-        <li>MongoDB</li>
-        <li>Redis</li>
-      </ul>
-    </div>
-    <div class="container">
-      <div class="project">
-        <h2>Project 1: Personal Website</h2>
-        <img src="project1.jpg" alt="Project 1" />
+    <main>
+      <div class="container">
+        <h2>About Me</h2>
         <p>
-          This is my personal website where I showcase my projects, skills, and
-          experiences.
+          Hello and welcome to my site I’m Likhith, a passionate
+          <span class="b-font" style="display: inline"
+            >&ldquo; Full stack developer &rdquo; with 1.5 years of
+            experience</span
+          >
+          at Way2News Pvt. Ltd. During my tenure, I’ve had the opportunity to
+          work on a variety of web applications, honing my skills in JavaScript,
+          jQuery, React, and Java. My expertise extends to database management
+          and optimization with MySQL, MongoDB, Redis, and ClickHouse.
         </p>
-      </div>
-      <div class="project">
-        <h2>Project 2: Task Manager App</h2>
-        <img src="project2.jpg" alt="Project 2" />
+        <h2>Education</h2>
         <p>
-          An application to manage tasks and track their progress efficiently.
+          I graduated with a major in<span
+            class="b-font"
+            style="display: inline"
+          >
+            Computer Science and Engineering from RGUKT Nuzvid</span
+          >
+          in 2023, where I developed a solid foundation in both theoretical and
+          practical aspects of software engineering. My goal is to bridge the
+          gap between academic knowledge and industry requirements, preparing
+          you to be a versatile and competent full stack developer.
         </p>
+        <h2>Tech Stack</h2>
+        <ul class="tech-stack">
+          <li title="General-purpose, object-oriented programming language">
+            Java
+          </li>
+          <li title="Microservices framework for rapid application development">
+            Spring Boot
+          </li>
+          <li
+            title="High-level, interpreted programming language for web development"
+          >
+            JavaScript
+          </li>
+          <li
+            title="Popular JavaScript library for simplifying DOM manipulation"
+          >
+            jQuery
+          </li>
+          <li title="JavaScript library for building user interfaces">
+            React.js
+          </li>
+          <li title="Relational database management system">MySQL</li>
+          <li title="NoSQL document database">MongoDB</li>
+          <li title="In-memory data store used for caching and messaging">
+            Redis
+          </li>
+          <li
+            title="Latest version of the markup language for structuring and presenting content on the web"
+          >
+            HTML5
+          </li>
+          <li
+            title="Latest version of the stylesheet language for describing the presentation of a document"
+          >
+            CSS3
+          </li>
+          <li title="Version control system for tracking changes in code">
+            VCS
+          </li>
+          <li title="just another programming lang">Python</li>
+          <li title="Unix shell for command-line interaction">Bash</li>
+          <li
+            title="Open-source operating system widely used for development and servers"
+          >
+            Linux
+          </li>
+        </ul>
+        <h2>Hobbies</h2>
+        <ul class="hobbies-list">
+          <li>🌙 Coding and programming</li>
+          <li>📚 Reading tech blogs and articles</li>
+          <li>🌲 Cricket and outdoor activities</li>
+          <li>🎧 Music and Films</li>
+        </ul>
       </div>
-      <div class="project">
-        <h2>Project 3: Portfolio Website</h2>
-        <img src="project3.jpg" alt="Project 3" />
+      <div class="container">
+        <h2 style="text-align: center; display: block; color: #0f0">
+          Projects/Work
+        </h2>
         <p>
-          A responsive portfolio website template built using HTML, CSS, and
-          JavaScript.
+          Unfortunately I couldn't show all my works coz most of them are
+          backend and optimisations but feel free to check on my github
+          <a
+            class="bang-link"
+            target="_blank"
+            href="https://github.com/Likhith-Aningi"
+            >👉here👈</a
+          >
         </p>
+        <div class="project">
+          <h2>Personal Website</h2>
+          <p>
+            This is my personal website where I showcase my projects, skills,
+            and experiences.
+          </p>
+        </div>
+        <div class="project">
+          <h2>React demos</h2>
+          <a
+            title="checkout code"
+            target="_blank"
+            href="https://github.com/Likhith-Aningi/reactPractice"
+            ><img src="./images/github.svg" width="30px" alt="gh-link "
+          /></a>
+          <a
+            title="checkout demo"
+            target="_blank"
+            href="https://likhithreacts.netlify.app/miniProjects "
+            ><img src="./images/demo.svg" width="30px" alt="demo-link "
+          /></a>
+          <p>
+            A web app built with react js to demonstrate some mini tasks and
+            some of React's core concepts demos
+          </p>
+        </div>
+        <div class="project">
+          <h2>Ping Pong Game</h2>
+          <a
+            title="checkout code"
+            target="_blank"
+            href="https://github.com/Likhith-Aningi/miniProject2022"
+            ><img src="./images/github.svg" width="30px" alt="gh-link "
+          /></a>
+          <p>
+            A 2 player desktop game built upon Java's Swing and AWT.. actually a
+            cool beginner project of mine 😎
+          </p>
+        </div>
+        <div class="project">
+          <h2>Stock Price Predictor</h2>
+          <a
+            title="checkout code"
+            target="_blank"
+            href="https://github.com/Likhith-Aningi/PongGame"
+            ><img src="./images/github.svg" width="30px" alt="gh-link "
+          /></a>
+          <p>
+            An application to predict Stocks based on past 9 years data using ML
+            with RNN and track their progress efficiently (built upon python).
+          </p>
+        </div>
       </div>
-    </div>
-
-    <div class="contact">
-      <a href="https://wa.me/+918639374440" target="_blank"
-        >contact me on whatsapp</a>
-      <a
-        href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSHvbSjzbVrpZwfQGpwNLZsgxwnnkrgzRSXmpCNZgfXDDVtddNgJdPfbHfRtZgLrZDNqzHJF"
-        target="_blank"
-        >gmail me</a>
-
-    </div>
+      <div class="contact">
+        
+      </div>
+    </main>
     <footer>
-      <p>&copy; <span id="year">2024</span> Likhith Aningi</p>
+      <p class="b-font">&copy; <span id="year">2024</span> Likhith Aningi</p>
     </footer>
   </body>
   <script>
