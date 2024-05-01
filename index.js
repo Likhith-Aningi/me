@@ -24,11 +24,13 @@ function toggleForm() {
 }
 
 document.addEventListener("click", function (event) {
-  var form = document.getElementById("contactForm");
-  var button = document.querySelector(".contact-button");
+  let form = document.getElementById("contactForm");
+  let button = document.querySelector(".contact-button");
+  let image = document.querySelector(".contact-button img");
   if (
     event.target !== form &&
     event.target !== button &&
+    event.target !== image &&
     !form.contains(event.target)
   ) {
     form.classList.remove("fadeIn");
@@ -38,6 +40,7 @@ document.addEventListener("click", function (event) {
     }, 370);
   }
 });
+
 const form = document.getElementById("form");
 const result = document.getElementById("result");
 
