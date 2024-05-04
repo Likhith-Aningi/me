@@ -40,6 +40,17 @@ document.addEventListener("click", function (event) {
     }, 370);
   }
 });
+//preventRightClick
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+//preventF12
+document.addEventListener("keydown", function (event) {
+  if (event.key === "F12") {
+    event.preventDefault();
+  }
+});
+
 
 const form = document.getElementById("form");
 const result = document.getElementById("result");
