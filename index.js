@@ -40,16 +40,20 @@ document.addEventListener("click", function (event) {
     }, 370);
   }
 });
-//preventRightClick
-document.addEventListener("contextmenu", function (e) {
-  e.preventDefault();
-});
-//preventF12
-document.addEventListener("keydown", function (event) {
-  if (event.key === "F12") {
-    event.preventDefault();
-  }
-});
+if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+  // Disable right-click
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+
+  // Disable F12
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "F12") {
+      event.preventDefault();
+    }
+  });
+}
+
 
 
 const form = document.getElementById("form");
