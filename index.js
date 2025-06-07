@@ -191,8 +191,6 @@ function initSocialLinksGlow() {
     });
 }
 
-// Initialize all functionality when DOM is loaded using jQuery
-// $(document).ready(() => {
 // Initialize VANTA fog effect
 initVantaFog();
 
@@ -219,6 +217,27 @@ $('a[href^="#"]').on('click', function (e) {
         }, 500, 'swing');
     }
 });
+$('.ui-toggle').on('click', function () {
+    $('#uiDropdown').toggle();
+});
+
+$('#uiDropdown li').on('click', function () {
+    const theme = $(this).data('ui');
+    if (theme === 'classic') {
+        window.location.href = 'classic-ui.html';
+    } else if (theme === 'clean') {
+        window.location.href = 'clean-ui.html';
+    }
+});
+
+$(document).on('click', function (e) {
+    if (!$(e.target).closest('.ui-switcher').length) {
+        $('#uiDropdown').hide();
+    }
+});
+$(window).on('scroll', function () {
+    $('#uiDropdown').hide();
+});
 if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
     $(document).on("contextmenu", function (e) {
         e.preventDefault();
@@ -229,4 +248,3 @@ if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
         }
     });
 }
-// }); 

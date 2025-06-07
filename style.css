@@ -108,6 +108,63 @@ body {
     transform: scale(1.2);
 }
 
+.ui-switcher {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #2a2826;
+    border: 1px solid #3a3836;
+    border-radius: 5px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ui-switcher:hover {
+    background-color: #3a3836;
+    border-color: #4a4846;
+}
+
+.ui-switcher i {
+    color: white;
+    font-size: 1rem;
+    /* pointer-events: none; */
+    /* So clicks pass through to parent */
+}
+
+.ui-dropdown {
+    display: none;
+    position: absolute;
+    top: 150%;
+    right: 0;
+    background-color: #2a2826;
+    border: 1px solid #3a3836;
+    border-radius: 5px;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    width: 140px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ui-dropdown li {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+}
+
+.ui-dropdown li:hover {
+    background-color: #3a3836;
+}
+
 .sideNav {
     display: flex;
     gap: 40px;
