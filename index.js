@@ -248,3 +248,6 @@ if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
         }
     });
 }
+if (/Windows/.test(navigator.userAgent)) {
+  $("#gameDownload").show();
+}
