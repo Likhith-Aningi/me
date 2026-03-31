@@ -13,7 +13,7 @@ function updateExperience() {
     const displayYears = yearsDiff >= 2 ? Math.floor(yearsDiff) + "+" : "2+";
     // Update all instances of experience years using jQuery
     $('.toChange').text(displayYears);
-    $('.exp h1').first().text(displayYears + " YEARS OF");
+    // $('.exp h1').first().text(displayYears + " YEARS OF");
     // Update in profile description using jQuery
     const $description = $('#Home p');
     $description.html($description.html().replace(/\d\+\s*years/, displayYears + " years"));
