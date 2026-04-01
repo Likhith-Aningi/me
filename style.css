@@ -413,7 +413,8 @@ body {
 .set1,
 .set2,
 .set3,
-.set4 {
+.set4,
+.set5 {
     margin-top: 20px;
     display: flex;
     gap: 30px;
@@ -423,7 +424,8 @@ body {
 .set1 img,
 .set2 img,
 .set3 img,
-.set4 img {
+.set4 img,
+.set5 img {
     width: 60px;
     height: 60px;
     position: relative;
@@ -432,7 +434,8 @@ body {
 .set1 img:hover,
 .set2 img:hover,
 .set3 img:hover,
-.set4 img:hover {
+.set4 img:hover,
+.set5 img:hover {
     transform: scale(1.1);
 }
 
