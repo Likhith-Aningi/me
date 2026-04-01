@@ -146,7 +146,7 @@ function initSocialLinksGlow() {
         linkedin: $('a[href*="linkedin"]'),
         github: $('.toGlow'),
         leetcode: $('a[href*="leetcode"]'),
-        resume: $('a[href*="resume"]')
+        resume: $('a[href*="resources/LIKHITH_ANINGI_JAVA_DEVELOPER.pdf"]')
     };
 
     const platforms = Object.keys(socialLinks);
@@ -163,6 +163,12 @@ function initSocialLinksGlow() {
     function glowPlatform(platform) {
         removeAllGlows();
         socialLinks[platform].addClass(`glow-${platform} glowing`);
+        // 👇 Add this
+        if (platform === 'resume') {
+            $('.social-links').addClass('resume-active');
+        } else {
+            $('.social-links').removeClass('resume-active');
+        }
     }
 
     // Initial glow
@@ -249,5 +255,5 @@ if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
     });
 }
 if (/Windows/.test(navigator.userAgent)) {
-  $("#gameDownload").show();
+    $("#gameDownload").show();
 }
